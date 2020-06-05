@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block Acc_Blog %}
+<li><a href="{{url_for('main.blog')}}">Blog</a></li>
+{% endblock %}
+{% block NavBtn %}
+{% endblock %}
+{% block content %}
+
+    <div class="error-box">
+        <h1>Something went wrong (500)</h1>
+        <p>We're experiencing some trouble on our end.Please try agin in the near future.</p>
+        <img  src="{{ url_for('static',filename='pic/error.png') }}" alt="Oops! error_404 png not found">
+    </div>
+
+{% endblock %}

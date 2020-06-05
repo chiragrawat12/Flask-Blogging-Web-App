@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block NavBtn %}
+<li><a href="{{url_for('users.login')}}">Login</a></li>
+{% endblock %}
+{% block content %}
+<form class="request-box" action="#" method="POST">
+    {{form.hidden_tag()}}
+
+    {{form.email.label()}}
+    <br>
+    {% if form.email.errors %}
+        {{form.email(class="invalid")}}
+        {% for error in form.email.errors %}
+        <div class="invalid-feedback">
+            <span>{{error}}</span>
+        </div>
+        {% endfor %}
+    {% else %}
+        {{form.email()}}
+    {% endif %}
+<br>
+<br>
+    {{form.submit()}}
+<br>
+<br>
+    <small>Don't have an account?<a href="{{url_for('users.register')}}">Create new one!</a></small>
+</form>
+{% endblock %}

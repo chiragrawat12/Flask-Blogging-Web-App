@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block Acc_Blog %}
+<li><a href="{{url_for('users.account')}}">Welcome,{{current_user.first_name+" "+current_user.last_name}}</a></li>
+<li><a href="{{url_for('posts.new_post')}}">New Post</a></li>
+{% endblock %}
+{% block content %}
+{% for post in posts.items %}
+<div class="blog_Container">
+    <div class="author">
+        <img src="{{url_for('static',filename='profile_pic/'+post.author.image_file)}}" alt="oops! user image is missing.">
+        <h1> <a href="{{ url_for('users.user_posts',email=post.author.email) }}">{{post.author.first_name + " " + post.author.last_name}}</a></h1>
+    </div>
+    <br>
+    <br>
+    <br>
+        <article>
+            <strong><a href="{{url_for('posts.post',post_id=post.id)}}">{{post.title}}</a></strong>
+            <br>
+            <hr>
+            <p>{{ (post.date_posted + timedelta(hours=5 , minutes=30)).strftime("%H:%M %p, %d/%m/%Y")}}</p>
+            <hr>
+            <div class="content">
+                {{post.content}}
+            </div>
+        </article>
+        <hr>
+        
+</div>
+{% endfor %}
+<div class="pages">
+{% for page_num in posts.iter_pages(left_edge=1 , right_edge=1 , left_current=1,right_current=2) %}
+    {% if page_num %}
+        {% if posts.page == page_num %}
+            <a class="curr_page" href="{{ url_for('main.blog',page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="page" href="{{ url_for('main.blog',page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+    <span>...</span>
+    {% endif %}
+{% endfor %}
+</div>
+{% endblock %}

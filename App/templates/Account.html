@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block Acc_Blog %}
+<li><a href="{{url_for('posts.new_post')}}">New Post</a></li>
+<li><a href="{{url_for('main.blog')}}">Blog</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="account_container">
+    <hr>
+    <div class="user_info">
+    <img class="user_img" src="{{image_file}}" alt="Oops! User image is not available.">
+    <br>
+        <p><strong>Name:</strong>&nbsp;{{current_user.first_name+" "+current_user.last_name}}</p>
+        <p><strong>Email ID:</strong>&nbsp;{{current_user.email}}</p>
+        <p><strong>Posts: </strong>{{posts.total}}</p>
+        <br>
+        <input class="updateInfoBtn" type="button" value="Update Info">
+    
+    </div>
+    <br>
+    <br>
+    <form class="updateForm" style="display: none;" action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <hr>
+        <br>
+        <img class="close" src="{{url_for('static',filename='pic/close.png')}}" alt="Oops! close image is not available.">
+        {{form.first_name.label()}}
+        <br>
+        {% if form.first_name.errors %}
+                {{form.first_name(class="invalid")}}
+                {% for error in form.first_name.errors %}
+                <div class="invalid-feedback">
+                        <span>{{error}}</span>
+                </div>
+            {% endfor %}
+        {% else %}
+                    {{form.first_name()}} 
+            {% endif %}
+        <br>    
+        <br>
+            {{form.first_name.label()}}
+        <br>
+            {% if form.last_name.errors %}
+                {{form.last_name(class="invalid")}}
+                {% for error in form.last_name.errors %}
+                    <div class="invalid-feedback">
+                        <span>{{error}}</span>
+                    </div>
+                {% endfor %}
+        {% else %}
+                {{form.last_name()}} 
+        {% endif %}
+        <br>
+        <br>
+        {{form.email.label()}}
+        <br>
+        {% if form.email.errors %}
+                {{form.email(class="invalid")}}
+                {% for error in form.email.errors %}
+                    <div class="invalid-feedback">
+                        <span>{{error}}</span>
+                    </div>
+                {% endfor %}
+        {% else %}
+                {{form.email()}} 
+        {% endif %}
+        <br>
+        <br>
+        
+        {{ form.picture.label() }}
+        <br>
+        <select name="profile-choose" id="SelectPP">
+            <option value="do-nothing">Don't change Profile Photo</option>
+            <option value="remove-profile">Remove Profile Photo</option>
+            <option value="choose-file">Choose Photo</option>
+        </select>
+        <br>
+        <br>
+        <div class="Choose-File" style="display: none;">
+        {{form.picture()}}
+        {% if form.picture.errors %}
+            {% for error in form.picture.errors %}
+                        <div class="invalid-feedback">
+                            <span>{{error}}</span>
+                        </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+        <br>
+        <br>
+        {{form.submit()}}
+        <br>
+        <br>
+        <hr>
+    </form>
+    <br>
+    <hr>
+</div>
+{% for post in posts.items %}
+<div class="blog_Container">
+    <br>
+    <br>
+    <br>
+        <article>
+            <strong><a href="{{url_for('posts.post',post_id=post.id)}}">{{post.title}}</a></strong>
+            <br>
+            <hr>
+            <p>{{ (post.date_posted + timedelta(hours=5 , minutes=30)).strftime("%H:%M %p, %d/%m/%Y")}}</p>
+            <hr>
+            <div class="content">
+                {{post.content}}
+            </div>
+        </article>
+        <hr>
+        
+</div>
+{% endfor %}
+<div class="pages">
+{% for page_num in posts.iter_pages(left_edge=1 , right_edge=1 , left_current=1,right_current=2) %}
+    {% if page_num %}
+        {% if posts.page == page_num %}
+            <a class="curr_page" href="{{ url_for('users.user_posts',email=user.email,page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="page" href="{{ url_for('users.user_posts',email=user.email,page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+    <span>...</span>
+    {% endif %}
+{% endfor %}
+</div>
+{% endblock %}

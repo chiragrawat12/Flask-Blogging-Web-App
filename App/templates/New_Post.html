@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block Acc_Blog %}
+<li><a href="{{url_for('main.blog')}}">Blog</a></li>
+<li><a href="{{url_for('users.account')}}">Account</a></li>
+{% endblock %}
+{% block content %}
+<legend>{{legend}}</legend>
+<br>
+<br>
+<form class="post-form" action="" method="POST">
+    {{form.hidden_tag()}}
+{{form.title.label()}}
+<br>
+{% if form.title.errors %}
+    {{form.title(class="invalid")}}
+        {% for error in form.title.errors %}
+            <div class="invalid-feedback">
+                <span>{{error}}</span>
+            </div>
+        {% endfor %}
+{% else %}
+    {{form.title()}}
+{% endif %}
+<br>
+<br>
+{{form.content.label()}}
+<br>
+{% if form.content.errors %}
+    {{form.content(class="invalid")}}
+        {% for error in form.content.errors %}
+            <div class="invalid-feedback">
+                <span>{{error}}</span>
+            </div>
+        {% endfor %}
+{% else %}
+    {{form.content()}}
+{% endif %}
+<br>
+<br>
+{{form.submit()}}
+</form>
+{% endblock %}

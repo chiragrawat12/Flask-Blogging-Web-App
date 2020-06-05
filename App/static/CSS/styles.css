@@ -1,0 +1,495 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-color:var(--More-Light);
+}
+:root{
+    --Dark:#001f26;
+    --Light:#00708a;
+    --Hover-Light:#00b7e0;
+    --More-Light:#A7C6DA;
+}
+.nav{
+    width: 100%;
+    height: 50px;
+    background-color:var(--Dark);
+}
+.navForm{
+    float: right;
+    position: relative;
+    top:8px;
+}
+.navForm input[type=submit]{
+    margin-right:20px;
+}
+.container{
+    z-index: -1;
+    position: relative;
+    top: -55px;
+    width:100%;
+    height: 100vh;
+    background-image: url('/static/pic/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: var(--Hover-Light);
+}
+.wel{
+    width: 50%;
+    font-size: 50px;
+    border: 8px double white;
+    outline: 6px double var(--Dark);
+    color: var(--Dark);
+    padding: 15px;
+    text-align: left;
+    position: relative;
+    top: 110px;
+    left: 120px;
+    cursor: none;
+    font-weight: bold;
+    transition-property: cursor,border,outline;
+    transition-duration: 0.5s,0.5s,0.5s;
+}
+.wel:hover{
+    cursor: pointer;
+    border:8px double var(--Dark) ;
+    outline: 6px double white;
+}
+#logo{
+    width:100px;
+    height: 100px;
+    position: relative;
+    left: 15px;
+    top: 5px;
+}
+input[type=submit]:focus{
+    outline: none;
+}
+input[type=submit]{
+    width: 75px;
+    height: 30px;
+    color: var(--Dark);
+    font-size: 15px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    background-color: var(--Light);
+    filter: none;
+    cursor: none;
+    transition-property: background-color,filter,border;
+    transition-duration: 0.4s,0.4s,0.4s;
+    text-align: center;
+
+}
+input[type=submit]:hover{
+    background-color: var(--Hover-Light);
+    filter: drop-shadow(8px 8px 4px black);
+    border: 1px solid black;
+    cursor: pointer;
+}
+.loginForm{
+    width:50%;
+    margin:0px auto;
+    margin-top: 40px;
+    text-align: center;
+    border:8px double white;
+    outline: 6px double var(--Dark);
+    padding: 25px;
+    transition-property:border,outline;
+    transition-duration:0.5s,0.5s ;
+}
+.loginForm input{
+    margin-bottom: 10px;
+}
+.loginForm:hover{
+    border: 8px double var(--Dark);
+    outline: 6px double white;
+}
+::placeholder{
+    text-align: center;
+    color: var(--Dark);
+    font-size: 12px;
+    transition:color 1s;
+}
+input[type=email],input[type=text],input[type=password]{
+    width: 30%;
+    height: 28px;
+    border: none;
+    font-weight: bold;
+    color: var(--Dark);
+    border-radius: 5px;
+    background-color: white;
+    transition-property: width,border-bottom,background-color;
+    transition-duration: 1s,1s,1s;
+}
+input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{
+    outline: none;
+    width: 50%;
+    background-color: var(--More-Light) ;
+    border-radius: 0px;
+    border-bottom: 1px solid black;
+    font-size: 14px;
+    font-weight: bold;
+    color:var(--Dark);
+    text-align: center;
+}
+input:focus::placeholder{
+    color:transparent;
+}
+
+.registerForm{
+    padding: 10px;
+    position: relative;
+    top: 7px;
+    margin:10vh auto;
+    margin-top:0px;
+    text-align: center;
+    border: 8px double white;
+    outline: 6px double var(--Dark);
+    width: 50%;
+    transition-property: border,outline;
+    transition-duration:0.5s,0.5s;
+}
+.registerForm input{
+    margin-bottom: 10px;
+}
+.registerForm:hover{
+    border: 8px double var(--Dark);
+    outline: 6px double white;
+}
+label{
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--Dark);
+}
+.footer{
+    width: 100%;
+    height: 30px;
+    text-align: right;
+    background-color: var(--Dark);
+    position: fixed;
+    bottom: 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.footer p{
+    color: var(--Hover-Light);
+    position: relative;
+    top: 5px;
+    right: 5px;
+}
+.flash-success{
+    width: 50%;
+    margin: -40px auto;
+    margin-bottom: 20px;
+    border: 1px solid green;
+    color: green;
+    background-color: rgba(0, 128, 0, 0.363);
+    padding: 10px;
+    border-radius: 5px;
+}
+.flash-unsuccess{
+    width: 50%;
+    margin: -40px auto;
+    margin-bottom: 20px;
+    border: 1px solid red;
+    color: red;
+    background-color: rgba(255, 0, 0, 0.363);
+    padding: 10px;
+    border-radius: 5px;
+}
+input.invalid{
+    border: 1px solid red;
+}
+input.invalid:focus{
+    border:0px ;
+    border-bottom: 1px solid red;
+}
+.invalid-feedback span{
+    font-size: 12px;
+    color:red;
+}
+.nav ul{
+    float: right;
+}
+.nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px;
+    padding: 5px;
+}
+.nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+
+}
+.nav ul li a:hover{
+    color: rgb(196, 187, 187);
+}
+.blog_Container,.account_container{
+    width: 70%;
+    margin:0px auto;
+    padding: 20px;
+    border-left:1px solid black;
+    border-right: 1px solid black;
+}
+article{
+    font-size: 26px;
+}
+.blog_Container p,.account_container article p{
+    font-size: 0.6em;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.account_container .user_img{
+    width: 90px;
+    height:90px;
+    border: 1px solid black;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.account_container .user_info{
+    width: 50%;
+    margin:10px 0px 10px 0px;
+}
+
+.updateForm{
+    width: 80%;
+    margin: 0px auto;
+    text-align: center;
+}
+input[type=button].updateInfoBtn{
+    width:100px
+}
+input[type=button]{
+    width: 75px;
+    height: 30px;
+    color: var(--Dark);
+    font-size: 15px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    background-color: var(--Light);
+    filter: none;
+    cursor: none;
+    transition-property: background-color,filter,border;
+    transition-duration: 0.4s,0.4s,0.4s;
+    text-align: center;
+}
+input[type=button]:hover{
+    background-color: var(--Hover-Light);
+    filter: drop-shadow(8px 8px 4px black);
+    border: 1px solid black;
+    cursor: pointer;
+}
+input[type=button]:focus{
+    outline: none;
+}
+.updateForm .close{
+    width:14px;
+    height: 14px;
+    float: right;
+}
+.close:hover{
+    cursor: pointer;
+}
+select:focus{
+    outline: none;
+}
+select{
+    width: 220px;
+    height: 30px;
+    color: var(--Dark);
+    font-size: 15px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    background-color: var(--Light);
+    filter: none;
+    cursor: none;
+    transition-property: background-color,filter,border;
+    transition-duration: 0.4s,0.4s,0.4s;
+    text-align: center;
+
+}
+select:hover{
+    background-color: var(--Hover-Light);
+    filter: drop-shadow(8px 8px 4px black);
+    border: 1px solid black;
+    cursor: pointer;
+}
+option{
+    background-color: var(--Hover-Light);
+}
+
+.post-form{
+    width: 60%;
+    margin: 50px auto;
+    text-align: center;
+    border-left:1px solid black ;
+    border-right:1px solid black ;
+}
+.post-form label{
+    font-size: 20px;
+}
+.post-form input[type=text]{
+    width: 70%;
+    text-align: left;
+    height: 40px;
+    font-size: 25px;
+    box-shadow: 5px 5px 3px black;
+}
+
+.post-form textarea{
+    width: 70% ;
+    height: 180px;
+    box-shadow: 5px 5px 3px black;
+    border: none;
+    background-color: white;
+    transition: background-color 1s;
+    font-size:18px;
+    
+}
+.post-form textarea:focus{
+    outline: none;
+    border: none;
+    background-color: var(--More-Light);
+}
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--More-Light);
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--Dark);
+    border-radius: 10px;
+  }
+  .author ul{
+      float: left;
+      text-align: center;
+  }
+  .author img{
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      float: left;
+  }
+  .author h1 {
+      float: inline-end;
+      font-size: 25px;
+      padding:15px 0px 0px 70px;
+  }
+  .author h1 a{
+      text-decoration: none;
+      color:rgb(36, 35, 35);
+  }
+  .author h1 a:hover{
+    color: rgb(54, 54, 54);
+  }
+  article strong a{
+      text-decoration: none;
+      color:black;
+  }
+  article strong a:hover{
+      color: rgb(54, 54, 54);
+  }
+  legend{
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: underline;
+      color: var(--Dark);
+  }
+.pages{
+    text-align: center;
+}
+.pages span{
+    font-size: 20px;
+    color: var(--Dark);
+}
+.page{
+    text-decoration: none;
+    border: 2px solid var(--Light);
+    padding: 2px 4px;
+    margin: 3px;
+    background-color: var(--Dark);
+    border-radius: 5px;
+    color: var(--Hover-Light);
+    font-size: 20px;
+    font-weight: bold;
+}
+.page:hover{
+    color: white;
+}
+.curr_page{
+    text-decoration: none;
+    border: 2px solid var(--Dark);
+    padding: 2px 4px;
+    margin: 3px;
+    background-color: var(--Hover-Light);
+    border-radius: 5px;
+    color: var(--Dark);
+    font-size: 20px;
+    font-weight: bold;
+}
+.curr_page:hover{
+    color: var(--Light);
+}
+.userP{
+    width: 70%;
+    margin: 0px auto;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.userP img{
+    width: 120px;
+    height: 120x;
+    border-radius: 50%;
+    position: relative;
+    left:20px;
+    top: 20px;
+    float: left;
+}
+.userP .user_info{
+    position: relative;
+    top: 35px;
+    left: 50px;
+}
+.request-box{
+    text-align: center;
+    margin: 80px auto;
+    padding: 90px 0px 100px 0px;
+    text-align: center;
+    border: 8px double white;
+    outline: 6px double var(--Dark);
+    width: 70%;
+    transition-property: border,outline;
+    transition-duration:0.5s,0.5s;
+}
+.request-box:hover{
+    border: 8px double var(--Dark);
+    outline: 6px double white;
+}
+.request-box input[type=submit]{
+    width:22%
+}
+.error-box{
+    font-size: 1.5em;
+    width: 70%;
+    text-align: left;
+    margin: 50px auto;
+}
+.error-box img{
+    width: 200px;
+    height: 200px;
+}

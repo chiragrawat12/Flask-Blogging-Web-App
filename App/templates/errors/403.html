@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block Acc_Blog %}
+<li><a href="{{url_for('main.blog')}}">Blog</a></li>
+{% endblock %}
+{% block NavBtn %}
+{% endblock %}
+{% block content %}
+
+    <div class="error-box">
+        <h1>You Don't have permission to do that (403)</h1>
+        <p>Please check your account and try again.</p>
+        <img  src="{{ url_for('static',filename='pic/error.png') }}" alt="Oops! error_404 png not found">
+    </div>
+
+{% endblock %}

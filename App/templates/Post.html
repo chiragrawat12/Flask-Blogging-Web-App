@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block Acc_Blog %}
+<li><a href="{{url_for('posts.new_post')}}">New Post</a></li>
+<li><a href="{{url_for('users.account')}}">Account</a></li>
+<li><a href="{{url_for('main.blog')}}">Blog</a></li>
+{% endblock %}
+{% block content %}
+
+<div class="blog_Container">
+    <div class="author">
+        <img src="{{url_for('static',filename='profile_pic/'+post.author.image_file)}}" alt="oops! user image is missing.">
+        <h1><a href="{{url_for('users.user_posts',email=post.author.email)}}"> {{post.author.first_name + " " + post.author.last_name}}</a></h1>
+    </div>
+    <br>
+    <br>
+    <br>
+        <article>
+            <strong>{{post.title}}</strong>
+            <br>
+            <hr>
+            <p>{{ (post.date_posted + timedelta(hours=5 , minutes=30)).strftime("%H:%M %p, %d/%m/%Y")}}</p>
+            <hr>
+            <div class="content">
+                {{post.content}}
+            </div>
+        </article>
+        <hr>
+        <br>
+        {% if post.author == current_user %}
+        <form action="" method="post">
+            <input id="edit_btn" name="submit_btn" type="submit" value="Edit">
+            <input  id="delete_btn" name="del" type="button" value="Delete">
+            <br>
+            <br>
+        <div class="confirm" style="display:none">
+            <input  id="yes" name="submit_btn" type="submit" value="Yes">
+            <input  id="no" name="submit_btn" type="submit" value="No">
+        </div>
+        
+        </form>
+
+        {% endif %}
+</div>
+{% endblock %}
